@@ -1,0 +1,19 @@
+extends ./layouts/document
+include ./components/icon
+
+block content
+    div.uk-card.uk-card-default
+        div.uk-card-boby.uk-padding-small
+            table.uk-table.uk-table-divider.uk-table-small
+                thead
+                    tr
+                        th Category name
+                tbody
+                    if category && category.length > 0
+                        each category in category
+                            tr.uk-box-shadow-hover-medium(id=`category-${category.id}`)
+                                th.uk-flex
+                                    a.uk-link-heading.uk-width-expand(href=`/category/${category.category}?page=1`) #{category.category}
+                    else
+                        tr
+                            th No category

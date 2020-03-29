@@ -1,0 +1,18 @@
+- var name = `${title ? `${title} - ` : ''}Lib-express`
+
+doctype html
+html
+    head
+        title #{name}
+
+        //insert uikit files
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/css/uikit.min.css" />
+
+        <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/js/uikit.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/uikit@3.3.7/dist/js/uikit-icons.min.js"></script>
+
+    body#app.uk-background-muted.uk-flex.uk-flex-column(style="min-height: 100vh")
+        include ./header
+        main.uk-container.uk-container-large.uk-padding-small.uk-flex-1(class="uk-width-1-2@m uk-width-1-1@s")
+            block content
+        include ./footer

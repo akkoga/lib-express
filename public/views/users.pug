@@ -1,0 +1,24 @@
+extends ./layouts/document
+
+block content
+    p #{title}
+
+    if users 
+        pre #{JSON.stringify(users)}
+        ul
+            each user in users
+                li #{user.id_user}
+                ul
+                    li ID : #{user.id_user}
+                    li login : #{user.login}
+                    li password : #{user.pswd}
+                    li role : #{user.role}
+    else if user
+        pre #{JSON.stringify(user)}
+            ul
+            li ID : #{user.id_user}
+            li login : #{user.login}
+            li password : #{user.password}
+            li role : #{user.role}
+    else 
+        p Aucun utilisateur

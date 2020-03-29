@@ -1,0 +1,57 @@
+extends ../layouts/document
+include ../components/icon
+include ../components/dashboardHeader
+
+block content
+    div.uk-card.uk-card-default
+        +dashboardHeader("Gestionnaire de category", "category", "Ajouter un category")
+
+        div.uk-card-boby.uk-padding-small
+            table.uk-table.uk-table-striped
+                thead
+                    tr
+                        th ID
+                        th.uk-width-expand Nom
+                        th Actions
+                tbody
+                    if category && category.length > 0
+                        each category in category
+                            tr.uk-box-shadow-hover-medium(id=`${category.id}`)
+                                th #{category.id}
+                                th(data-category) #{category.category}
+                                th.uk-flex.actions
+                                    div(uk-tooltip="title: Éditer le category")
+                                        a.uk-button.uk-button-primary.uk-button-small.uk-padding-remove.uk-border-circle(uk-toggle href=`#category-${category.id}` style="width:32px; height: 32px")
+                                            +icon('pencil')
+                                    div.uk-border-circle.uk-margin-small-left(uk-tooltip="title: Suprimer le category")
+                                        button.deleteButton.uk-button.uk-button-danger.uk-button-small.uk-padding-remove.uk-border-circle(style="width:32px; height: 32px")
+                                            +icon('trash')
+                                    div(uk-modal id=`category-${category.id}`)
+                                        div.uk-modal-body.uk-modal-dialog
+                                            h3.uk-modal-title Modifier le category
+                                            div.form
+                                                div.uk-card-boby.uk-padding-small
+                                                    div.uk-margin
+                                                        input.id.uk-input.uk-form-width-1-1(name="id" type="hidden" required value=`${category.id}`)
+                                                        input.category.uk-input.uk-form-width-1-1(name="category" type="text" value=`${category.category}` placeholder="Nom du category" required)
+                                                footer.uk-card-footer
+                                                    button.uk-button.uk-button-primary(type="submit" uk-toggle=`target: #category-${category.id}`) Modifier le category
+                    else
+                        tr#0
+                            th 0
+                            th Aucun category
+                            th
+
+    div#addcategory(uk-modal)
+        div.uk-modal-body.uk-modal-dialog
+            h3.uk-modal-title Ajouter un category
+            div.form
+                div.uk-card-boby.uk-padding-small
+                    div.uk-margin
+                        input.category.uk-input.uk-form-width-1-1(name="category" type="text" placeholder="Nom du category" required)
+                footer.uk-card-footer
+                    button.uk-button.uk-button-primary(type="submit") Créer le category
+
+    script(src="/src/js/delete/category.js")
+    script(src="/src/js/patch/category.js")
+    script(src="/src/js/post/category.js")

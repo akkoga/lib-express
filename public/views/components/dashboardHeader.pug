@@ -1,0 +1,19 @@
+include ./icon
+
+mixin dashboardHeader(title, context, contextTitle)
+    header.uk-card-header
+        div.uk-grid-small.uk-flex-middle(uk-grid)
+            div.uk-width-auto
+                a(href=`/dashboard` uk-tooltip="title: Revenir au dashboard")
+                    +icon('arrow-left')(class="uk-icon-button")
+            div.uk-width-expand
+                h3.uk-catd-title.uk-margin-remove-bottom.uk-text-center #{title}
+
+            div.uk-width-auto
+                if context == "category"
+                    a.uk-link-reset(href="#addcategory" uk-toggle="")
+                        +icon('plus')(class="uk-icon-button")
+
+                else
+                    a(href=`/dashboard/${context}/add` uk-tooltip=`title: ${contextTitle}`)
+                        +icon('plus')(class="uk-icon-button")
