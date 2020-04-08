@@ -1,0 +1,11 @@
+extends ./layouts/document
+include ./components/article
+
+block content
+    if articles
+        if articles.length > 0
+            div
+                each article in articles
+                    +article(article)
+        else
+            p length : #{articles.length}

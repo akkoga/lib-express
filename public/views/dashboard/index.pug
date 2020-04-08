@@ -1,0 +1,46 @@
+extends ../layouts/document
+include ../components/icon
+
+block content
+    h2.uk-text-center Gestionnaires
+    div.uk-child-width-1-2(uk-grid)
+        div
+            div.uk-card.uk-card-default
+                header.uk-card-header.uk-padding-small
+                    h3
+                        +icon('file-text').uk-margin-small-right
+                        span Gestionnaires d'article
+                div.uk-card-body
+                    p Nomber d'article: #{article.length}
+                footer.uk-card-footer.uk-padding-small
+                    a.uk-button.uk-button-default.uk-button-small(href='/dashboard/article') Y acceder
+        div
+            div.uk-card.uk-card-default
+                header.uk-card-header.uk-padding-small
+                    h3
+                        +icon('category').uk-margin-small-right
+                        span Gestionnaires de category
+                div.uk-card-body
+                    p Nomber de category: #{category.length}
+                footer.uk-card-footer.uk-padding-small
+                    a.uk-button.uk-button-default.uk-button-small(href='/dashboard/category') Y acceder
+        div
+            div.uk-card.uk-card-default
+                header.uk-card-header.uk-padding-small
+                    h3
+                        +icon('file-text').uk-margin-small-right
+                        span Gestionnaires de commentaire
+                div.uk-card-body
+                    p Nomber de commentaire: #{comment.length}
+                footer.uk-card-footer.uk-padding-small
+                    a.uk-button.uk-button-default.uk-button-small(href='/dashboard/commentaire') Y acceder
+        div
+            div.uk-card.uk-card-default
+                header.uk-card-header.uk-padding-small
+                    h3
+                        +icon('file-text').uk-margin-small-right
+                        span Gestionnaires d'utilisateur
+                div.uk-card-body
+                    p Nomber d'utilisateur: #{user.length}
+                footer.uk-card-footer.uk-padding-small
+                    a.uk-button.uk-button-default.uk-button-small(href='/dashboard/user') Y acceder

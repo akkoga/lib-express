@@ -1,0 +1,41 @@
+extends ../../layouts/document
+include ../../components/icon
+include ../../components/dashboardHeader
+
+block content
+    div.uk-card.uk-card-default
+        +dashboardHeader("Gestionnaire d'article", "article", "Créer un nouvel article")
+
+        div.uk-card-boby.uk-padding-small
+            table.uk-table.uk-table-striped
+                thead
+                    tr
+                        th ID
+                        th Titre
+                        th Auteur
+                        th category
+                        th Commentaire
+                        th Actions
+                if articles && articles.length > 0
+                    each article in articles
+                        tr.uk-box-shadow-hover-medium
+                            th #{article.id}
+                            th #{article.title}
+                            th #{article.author}
+                            th #{article.count.category}
+                            th #{article.count.comment}
+                            th.uk-flex.actions(id=`${article.id}`)
+                                a.uk-button.uk-button-primary.uk-button-small.uk-padding-remove.uk-border-circle(href=`/dashboard/article/?id=${article.id}` uk-tooltip="title: Éditer l'article" style="width:32px; height: 32px")
+                                    +icon('pencil')
+                                button.deleteButton.uk-button.uk-button-danger.uk-button-small.uk-padding-remove.uk-border-circle.uk-margin-small-left(uk-tooltip="title: Suprimer l'article" style="width:32px; height: 32px")
+                                    +icon('trash')
+                else
+                    tr
+                        th 0
+                        th Aucun article
+                        th
+                        th 
+                        th 
+                        th 
+
+    script(src="/src/js/delete/article.js")

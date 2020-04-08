@@ -1,0 +1,16 @@
+mixin categoryForm(category)
+    form#categoryForm(method="post")
+        div.uk-margin.uk-inline
+            input#categoryName.uk-input(name="categoryName" type="text" placeholder="Ajouter un category")
+            button.uk-button.uk-button-text.uk-position-small.uk-position-center-right(type="submit" uk-tooltip="title: Ajouter un category" style="z-index: 1; cursor: pointer; background: #FFF")
+                +icon('plus')
+    ul#categoryList.uk-list
+        if category && category.length > 0
+            each category in category
+                li.category
+                    label
+                        input.uk-checkbox(type="checkbox" id=`categoryId-${category.id}`)
+                        | #{category.category}
+        else
+            li Aucun category
+    script(src="/src/js/addcategory.js")
